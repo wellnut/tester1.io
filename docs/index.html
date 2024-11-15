@@ -50,7 +50,7 @@
     <script>
         async function confirmInput() {
             const uid = document.getElementById("uidInput").value;
-            const apiUrl = `https://enka.network/api/uid/${uid}/?info`;
+            const apiUrl = `https://enka.network/api/uid/${uid}?info`;
 
             const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // CORS proxy URL
             const finalUrl = proxyUrl + apiUrl;  // Concatenate the proxy with the original URL
