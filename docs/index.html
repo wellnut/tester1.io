@@ -50,7 +50,7 @@
     <script>
         async function confirmInput() {
             const uid = document.getElementById("uidInput").value;
-            const apiUrl = `https://enka.network/api/uid/${uid}?info`;
+            const apiUrl = `https://enka.network/api/uid/${uid}/?info`;
 
             try {
                 // Make the API call
@@ -60,7 +60,16 @@
                 if (response.ok) {
                     const data = await response.json();
                     console.log("API Response:", data); // Debug the returned data in the console
-                    alert("Data received. Check the console for details.");
+
+                    // Extract player info from the response
+                    const playerInfo = data.playerInfo;
+                    const nickname = playerInfo.nickname;
+                    const level = playerInfo.level;
+                    const signature = playerInfo.signature;
+                    const worldLevel = playerInfo.worldLevel;
+
+                    // Display the extracted values in an alert
+                    alert(`Nickname: ${nickname}\nLevel: ${level}\nSignature: ${signature}\nWorld Level: ${worldLevel}`);
                 } else {
                     console.error("API request failed with status:", response.status);
                     alert("Failed to retrieve data. Check the console for details.");
